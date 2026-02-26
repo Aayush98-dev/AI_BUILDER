@@ -35,7 +35,7 @@ const Navbar = () => {
     <>
       <nav className="top-0 left-0 z-50 w-full flex items-center justify-between py-4 px-4 md:px-16 lg:px-24 xl:px-32 bg-slate-950/90 backdrop-blur border-b border-slate-800 text-white">
         <Link to='/'>
-              <img src={assets.logo} alt="logo" className='h-5 sm:h-7' />
+              <img src={assets.logo} alt="logo" className='h-40 sm:h-10 w-50' />
           </Link>
 
           <div className="hidden md:flex items-center gap-8 transition duration-500">
