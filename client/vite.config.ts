@@ -5,6 +5,13 @@ import path from "path"
 
 // https://vite.dev/config/
 export default defineConfig({
+
+  server: {
+    allowedHosts: [
+      "candied-babied-timid.ngrok-free.dev"
+    ]
+  },
+
   plugins: [react(), tailwindcss()],
   resolve: {
     alias:{
