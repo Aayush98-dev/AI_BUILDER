@@ -3,6 +3,8 @@ import prisma from '../lib/prisma.js'
 import openai from '../configs/openai.js'
 import { version } from 'node:os';
 import { versions } from 'node:process';
+import { toSingleString } from '../utils/toSingleString.js';
+
 
 
 // Controller function to make revision
@@ -12,7 +14,7 @@ export const makeRevision = async (req: Request, res: Response) => {
     const userId = req.userId;
 
     try {
-        const { projectId } = req.params;
+        const projectId  = toSingleString(req.params.projectId);
 
         const { message } = req.body;
 
@@ -135,7 +137,7 @@ export const makeRevision = async (req: Request, res: Response) => {
             await prisma.user.update({
                 where: {id: userId},
                 data: {credits: {increment: 5}}
-            })
+            })  
             return;
 
         }
@@ -193,7 +195,8 @@ export const rollbackToVersion = async (req: Request, res:Response) => {
             return res.status(401).json({message: 'Unauthorized'})
         }
 
-        const { projectId, versionId } = req.params;
+        const projectId = toSingleString(req.params.projectId);
+        const versionId = toSingleString(req.params.versionId);
 
         const project = await prisma.websiteProject.findUnique({
             where: {id: projectId, userId},
@@ -240,7 +243,7 @@ export const deleteProject = async (req: Request, res:Response) => {
 
         const userId = req.userId;
         
-        const { projectId } = req.params;
+        const projectId = toSingleString(req.params.projectId);
 
 
         await prisma.websiteProject.delete({
@@ -261,7 +264,7 @@ export const getProjectPreview = async (req: Request, res:Response) => {
 
         const userId = req.userId;
         
-        const { projectId } = req.params;
+        const projectId = toSingleString(req.params.projectId);
 
         if(!userId){
             return res.status(401).json({message: 'Unauthorized'})
@@ -305,7 +308,7 @@ export const getPublishedProject = async (req: Request, res:Response) => {
 export const getProjectById = async (req: Request, res:Response) => {
     try {
 
-        const {projectId} = req.params;
+        const projectId = toSingleString(req.params.projectId);
 
         const project = await prisma.websiteProject.findFirst({
             where: {id: projectId}
@@ -329,7 +332,7 @@ export const saveProjectCode = async (req: Request, res:Response) => {
 
         const userId = req.userId
 
-        const {projectId} = req.params;
+        const projectId = toSingleString(req.params.projectId);
 
         const {code} = req.body;
 
