@@ -11,10 +11,19 @@ const app = express();
 
 const port = 5000;
 
+// const corsOptions = {
+//     origin: process.env.TRUSTED_ORIGINS?.split(',') || [],
+//     credentials: true,
+// }
+
 const corsOptions = {
-    origin: process.env.TRUSTED_ORIGINS?.split(',') || [],
+    origin: [
+        "http://localhost:5173",
+        "https://ai-builder-3b2f41cgw-kjhuhguygs-projects.vercel.app",
+        "https://ai-builder-ivory.vercel.app"
+    ],
     credentials: true,
-}
+};
 
 app.use(cors(corsOptions))
 app.post('/api/stripe', express.raw({type: 'application/json'}), stripeWebHook)
