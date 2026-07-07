@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import prisma from '../lib/prisma.js';
 import openai from '../configs/openai.js';
 import Stripe from 'stripe'
+import { toSingleString } from '../utils/toSingleString.js';
 
 
 // Get User Credits
@@ -221,7 +222,7 @@ export const getUserProject = async (req: Request, res: Response) => {
             return res.status(401).json({message: 'Unauthorized'});
         }
 
-        const {projectId} = req.params;
+        const projectId  = toSingleString(req.params.projectId);
 
         const project = await prisma.websiteProject.findUnique({
             where: {id: projectId, userId},
@@ -271,7 +272,7 @@ export const togglePublish = async (req: Request, res: Response) => {
             return res.status(401).json({message: 'unauthorized'});
         }
 
-        const {projectId} = req.params;
+        const projectId  = toSingleString(req.params.projectId);
 
         const project = await prisma.websiteProject.findUnique({
             where: {id: projectId, userId}
