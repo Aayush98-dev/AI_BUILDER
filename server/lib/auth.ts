@@ -18,7 +18,12 @@ export const auth = betterAuth({
         deleteUser: {enabled: true}
     },
 
-    trustedOrigins,
+    trustedOrigins: [
+        "https://ai-builder-3b2f41cgw-kjhuhguygs-projects.vercel.app",
+        "https://ai-builder-ivory.vercel.app",
+        "http://localhost:5173"
+    ],
+
     baseURL: process.env.BETTER_AUTH_URL!,
     secret: process.env.BETTER_AUTH_SECRET!,
     advanced: {
