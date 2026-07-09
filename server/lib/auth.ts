@@ -20,7 +20,7 @@ export const auth = betterAuth({
 
     trustedOrigins: [
         "http://localhost:5173",
-        "https://ai-builder-steel.vercel.app/"
+        "https://ai-builder-steel.vercel.app"
     ],
 
     baseURL: process.env.BETTER_AUTH_URL!,
