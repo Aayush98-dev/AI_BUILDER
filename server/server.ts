@@ -11,10 +11,10 @@ const app = express();
 
 const port = 5000;
 
-// const corsOptions = {
-//     origin: process.env.TRUSTED_ORIGINS?.split(',') || [],
-//     credentials: true,
-// }
+const corsOptions = {
+    origin: process.env.TRUSTED_ORIGINS?.split(',') || [],
+    credentials: true,
+}
 
 // const corsOptions = {
 //     origin: [
@@ -23,7 +23,7 @@ const port = 5000;
 //     credentials: true,
 // };
 
-app.use(cors())
+app.use(cors(corsOptions))
 // app.options("*", cors(corsOptions));
 
 

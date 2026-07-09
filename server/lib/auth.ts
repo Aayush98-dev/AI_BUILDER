@@ -19,8 +19,6 @@ export const auth = betterAuth({
     },
 
     trustedOrigins: [
-        "https://ai-builder-3b2f41cgw-kjhuhguygs-projects.vercel.app",
-        "https://ai-builder-ivory.vercel.app",
         "http://localhost:5173"
     ],
 

@@ -6,8 +6,8 @@ import { Providers } from './provider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
-  <Providers>
-    <App />
-  </Providers>
+    <Providers>
+      <App />
+    </Providers>
   </BrowserRouter>,
 )
