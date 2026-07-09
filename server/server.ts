@@ -11,19 +11,19 @@ const app = express();
 
 const port = 5000;
 
-const corsOptions = {
-    origin: process.env.TRUSTED_ORIGINS?.split(',') || [],
-    credentials: true,
-}
+// const corsOptions = {
+//     origin: process.env.TRUSTED_ORIGINS?.split(',') || [],
+//     credentials: true,
+// }
 
 // const corsOptions = {
 //     origin: [
-//         "http://localhost:5173",
+//         "https://ai-builder-1rriwt0yu-kjhuhguygs-projects.vercel.app",
 //     ],
 //     credentials: true,
 // };
 
-app.use(cors(corsOptions))
+app.use(cors())
 // app.options("*", cors(corsOptions));
 
 
