@@ -11,17 +11,15 @@ const app = express();
 
 const port = 5000;
 
-const corsOptions = {
-    origin: process.env.TRUSTED_ORIGINS?.split(',') || [],
-    credentials: true,
-}
-
 // const corsOptions = {
-//     origin: [
-//         "https://ai-builder-1rriwt0yu-kjhuhguygs-projects.vercel.app",
-//     ],
+//     origin: process.env.TRUSTED_ORIGINS?.split(',') || [],
 //     credentials: true,
-// };
+// }
+
+const corsOptions = {
+    origin: 'https://ai-builder-steel.vercel.app',
+    credentials: true,
+};
 
 app.use(cors(corsOptions))
 // app.options("*", cors(corsOptions));
